@@ -1,33 +1,50 @@
 import 'package:flutter/material.dart';
 import "./widgets/Button1.dart";
-
 import "./widgets/Button2.dart";
+import "./pages/splash.dart";
+import "./pages/SignUp.dart";
+import "./route_generator.dart";
+
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
 
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    bool isLoggedIn = false;
+
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Attini Markets',
-      theme: ThemeData(
-          primaryColor: const Color(0xff0B3250),
-          accentColor: const Color(0xffBC2132),
-          textTheme: ThemeData.light().textTheme.copyWith(
-                button: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
+        debugShowCheckedModeBanner: false,
+        title: 'Attini Markets',
+        theme: ThemeData(
+            primaryColor: const Color(0xff0B3250),
+            accentColor: const Color(0xffBC2132),
+            fontFamily: "Poppins",
+            textTheme: ThemeData.light().textTheme.copyWith(
+                  button: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20),
+                ),
+            appBarTheme: AppBarTheme(
+                backgroundColor: const Color(0xff0B3250),
+                titleTextStyle: TextStyle(
                     fontFamily: "Poppins",
-                    fontSize: 20),
-              )),
-      home: const MyHomePage(title: 'Home Page'),
-    );
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    fontSize: 20))),
+        initialRoute: "/",   
+        //accepts a method that returns routes, which is stored in the custom routeGenerator class we made
+        onGenerateRoute: RouteGenerator.generateRoute, 
+        );
   }
 }
 
@@ -43,29 +60,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     //ge the screen size
-    final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
-      body: Column(children: [
-        Container(
-            width: double.infinity,
-            color: Colors.white,
-            height: screenHeight / 2,
-            child: Center(
-                child: Image.asset("./assets/images/logo.png", width: 300))),
-        Container(
-          color: const Color(0xff0B3250),
-          height: screenHeight / 2,
-          width: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Button1(Callback: () {}, text: "Login"),
-              SizedBox(height: 10),
-              Button2(Callback: (){},text: "Sign Up",)
-            ],
-          ),
-        )
-      ]),
+      appBar: AppBar(title: Text("Real Estate Market")),
+      body: Center(child: Text("Real estate market")),
     );
   }
 }
