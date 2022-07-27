@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import "../Forms/Seller_form.dart";
+import "../Forms/Non-seller_form.dart";
 
 class SignUp extends StatefulWidget {
   String data;
@@ -18,18 +20,16 @@ class _SignUpState extends State<SignUp> {
               title: Text("Sign Up"),
               bottom: TabBar(
                 tabs: [
-                  Tab(text: "Seller",),
+                  Tab(
+                    text: "Seller",
+                  ),
                   Tab(text: "Non-Seller"),
                 ],
               )),
           body: TabBarView(
             children: [
-              Center(
-                child: Text("Seller Page"),
-              ),
-              Center(
-                child: Text("Non-Seller Page"),
-              ),
+              Seller_form(),
+              NonSeller_form(),
             ],
           )),
     );
