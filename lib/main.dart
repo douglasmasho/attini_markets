@@ -38,9 +38,9 @@ class _MyAppState extends State<MyApp> {
                 backgroundColor: const Color(0xff0B3250),
                 titleTextStyle: TextStyle(
                     fontFamily: "Poppins",
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w500,
                     color: Colors.white,
-                    fontSize: 20))),
+                    fontSize: 21))),
         initialRoute: "/",   
         //accepts a method that returns routes, which is stored in the custom routeGenerator class we made
         onGenerateRoute: RouteGenerator.generateRoute, 
